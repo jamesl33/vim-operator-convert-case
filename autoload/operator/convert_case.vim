@@ -1,6 +1,5 @@
 function! s:get_target_text(motion_wiseness) abort
     if a:motion_wiseness !=# 'char'
-        echoerr 'This operator supports only characterwise.'
         return
     endif
 
