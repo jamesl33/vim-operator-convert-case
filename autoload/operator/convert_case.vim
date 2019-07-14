@@ -17,17 +17,35 @@ endfunction
 
 function! operator#convert_case#convert_to(motion_wiseness) abort
     let l:target_text = s:get_target_text(a:motion_wiseness)
-    execute 'normal! a' . convert_case#convert_to(g:operator#convert_case#target_case, l:target_text)
+    let l:pos = getpos('.')
+
+    if l:pos[2] == 1
+        execute 'normal! i' . convert_case#convert_to(g:operator#convert_case#target_case, l:target_text)
+    else
+        execute 'normal! a' . convert_case#convert_to(g:operator#convert_case#target_case, l:target_text)
+    endif
 endfunction
 
 
 function! operator#convert_case#toggle_upper_lower(motion_wiseness) abort
     let l:target_text = s:get_target_text(a:motion_wiseness)
-    execute 'normal! a' . convert_case#toggle_upper_lower(l:target_text)
+    let l:pos = getpos('.')
+
+    if l:pos[2] == 1
+        execute 'normal! i' . convert_case#toggle_upper_lower(l:target_text)
+    else
+        execute 'normal! a' . convert_case#toggle_upper_lower(l:target_text)
+    endif
 endfunction
 
 
 function! operator#convert_case#loop(motion_wiseness) abort
     let l:target_text = s:get_target_text(a:motion_wiseness)
-    execute 'normal! a' . convert_case#loop(l:target_text)
+    let l:pos = getpos('.')
+
+    if l:pos[2] == 1
+        execute 'normal! i' . convert_case#loop(l:target_text)
+    else
+        execute 'normal! a' . convert_case#loop(l:target_text)
+    endif
 endfunction
